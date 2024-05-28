@@ -141,8 +141,7 @@ const Carousel = () => {
                     Mebellar sifatiga 100% javob beramiz!
                   </h1>
                   <p className="mt-6 sm:text-lg text-[15px] px-3 sm:px-0 leading-8 text-white">
-                    Zamonaviy va dunyo standartlariga mos mebellar to'plamini
-                    chegirma va foizsiz to'lovlar bilan xarid qiling.
+                    Dunyo standartlariga mos mebellarni chegirma va foizsiz to'lovlar bilan xarid qiling.
                   </p>
                   <div className="mt-10 flex items-center justify-center gap-x-6">
                     <Link
