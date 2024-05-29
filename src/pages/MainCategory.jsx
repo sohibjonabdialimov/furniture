@@ -85,7 +85,13 @@ const MainCategory = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:pb-28 pb-10">
             {data.map((item) => {
               return (
-                <div onClick={() => {navigate(`/category/${item.key}`)}} key={item.id} className="w-full relative mx-auto h-auto overflow-hidden rounded-lg category_item">
+                <div
+                  onClick={() => {
+                    navigate(`/category/${item.key}`);
+                  }}
+                  key={item.id}
+                  className="w-full relative mx-auto h-auto overflow-hidden rounded-lg category_item cursor-pointer"
+                >
                   <img
                     src={item.img}
                     alt="image"
@@ -98,95 +104,6 @@ const MainCategory = () => {
                 </div>
               );
             })}
-
-            {/* <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m2}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m3}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg category_item">
-              <img
-                src={m4}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m5}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m6}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg category_item">
-              <img
-                src={m7}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m8}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div>
-            <div className="w-full relative mx-auto h-auto overflow-hidden rounded-lg">
-              <img
-                src={m9}
-                alt="image"
-                className="w-full h-auto relative z-0 rounded-lg transition-all duration-300 hover:scale-110"
-              />
-              <div className="category_item_desc">
-                <p>31 ta mahsulot</p>
-                <h2>Yotoqxona mebellari</h2>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

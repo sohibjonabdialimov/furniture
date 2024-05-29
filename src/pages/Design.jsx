@@ -43,11 +43,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -59,11 +59,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -75,11 +75,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -91,11 +91,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -107,11 +107,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -123,11 +123,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -139,11 +139,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -155,11 +155,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -171,11 +171,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -187,11 +187,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -203,11 +203,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -219,11 +219,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -235,11 +235,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -251,11 +251,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -267,11 +267,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -283,11 +283,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
@@ -299,11 +299,11 @@ const Design = () => {
               id="myImg"
               alt="Uyingiz uchun dizayn tanlang"
             />
-            <div ref={modal} id="myModal" class="modal">
-              <span onClick={() => closeFunc()} class="close">
+            <div ref={modal} id="myModal" className="modal">
+              <span onClick={() => closeFunc()} className="close">
                 &times;
               </span>
-              <img ref={modalImg} class="modal-content" id="img01" />
+              <img ref={modalImg} className="modal-content" id="img01" />
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
