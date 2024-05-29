@@ -754,6 +754,24 @@ a.active {
   font-size: 17px;
   text-decoration: line-through;
 }
+/* caegory page */
+.category img{
+  filter: brightness(75%);
+}
+.category_item_desc{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.category_item_desc h2{
+  color: #fff;
+  font-weight: 600;
+  font-size: 28px;
+}
+.category_item_desc p{
+  color: #fff;
+  font-size: 15px;
+}
 @media (max-width: 800px) {
   .map_wrap svg {
     width: 40px;

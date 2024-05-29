@@ -22,6 +22,8 @@ import Saved from "./pages/Saved";
 import "./App.css";
 import "./style/dark.scss";
 import { AuthContext } from "./context/AuthContext";
+import OneFurniture from "./pages/oneFurniture/OneFurniture";
+import MainCategory from "./pages/MainCategory";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -41,8 +43,10 @@ function App() {
               <Route path="design" element={<Design />} />
               <Route path="order" element={<Order />} />
               <Route path="saved" element={<Saved />} />
+              <Route path="furnitures/:id" element={<OneFurniture />} />
               <Route path="contact" element={<Contact />} />
               <Route path="feedback" element={<Feedback />} />
+              <Route path="category" element={<MainCategory />} />
               <Route path="installment" element={<Installment />} />
             </Route>
             <Route path="/admin">

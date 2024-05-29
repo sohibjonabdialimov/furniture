@@ -5,9 +5,10 @@ import { db } from "../firebase";
 import heart from "../assets/heart.png";
 import fill_heart from "../assets/fill_heart.png";
 import basket from "../assets/basket.png";
+import { useNavigate } from "react-router-dom";
 const Furniture = () => {
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       let list = [];
@@ -29,12 +30,10 @@ const Furniture = () => {
       <div className="min-h-[90dvh] px-6 lg:px-32 mx-auto">
         <h1 className="common_title">Mebellar to'plami</h1>
 
-
-
         <div className="furniture_wrap">
           {data.map((item) => {
             return (
-              <div key={item.id} className="furniture_item">
+              <div onClick={() => {navigate(`/furnitures/${item.id}`)}} key={item.id} className="furniture_item cursor-pointer">
                 <div className="furniture_img">
                   <img src={item.img} alt="" />
                   {false ? (
