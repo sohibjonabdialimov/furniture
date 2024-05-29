@@ -291,7 +291,7 @@ const Design = () => {
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
-          <div className="d17">
+          <div className="d17 sm:block hidden">
             <img
               onClick={(e) => onOpen(e)}
               className="w-[200px] h-[200px] myImg"
