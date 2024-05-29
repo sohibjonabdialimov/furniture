@@ -77,7 +77,7 @@ const Header = () => {
               Bosh sahifa
             </NavLink>
             <NavLink
-              to={"/furnitures"}
+              to={"/category"}
               className="text-base font-mono leading-6 text-gray-900"
             >
               Mebellar
@@ -169,7 +169,7 @@ const Header = () => {
                     Bosh sahifa
                   </NavLink>
                   <NavLink
-                    to={"/furnitures"}
+                    to={"/category"}
                     className="-mx-3 block rounded-lg px-3 py-2 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Mebellar

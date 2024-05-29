@@ -39,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<UsersLayout />}>
               <Route index element={<Dashboard />} />
-              <Route path="furnitures" element={<Furniture />} />
+              {/* <Route path="furnitures" element={<Furniture />} /> */}
               <Route path="design" element={<Design />} />
               <Route path="order" element={<Order />} />
               <Route path="saved" element={<Saved />} />
@@ -47,6 +47,7 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="feedback" element={<Feedback />} />
               <Route path="category" element={<MainCategory />} />
+              <Route path="category/:id" element={<Furniture />} />
               <Route path="installment" element={<Installment />} />
             </Route>
             <Route path="/admin">
