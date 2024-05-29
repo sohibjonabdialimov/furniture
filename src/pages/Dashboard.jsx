@@ -6,6 +6,7 @@ import Location from "../components/Location";
 import AutoSlider from "../components/AutoSlider";
 import CategorySlider from "../components/CategorySlider";
 import Information from "../components/Information";
+import GridCategory from "../components/grid/GridCategory";
 
 const Dashboard = () => {
   return (
@@ -13,6 +14,7 @@ const Dashboard = () => {
       <Carousel />
       <div className="container">
         <CategorySlider />
+        <GridCategory />
         <Cards />
         <Gallery />
         <Information />

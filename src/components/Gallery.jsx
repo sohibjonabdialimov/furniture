@@ -19,10 +19,10 @@ const Gallery = () => {
         Zamonaviy mebellar
       </h1>
       <div className="gallery mt-5 sm:mt-0">
-        <div className="i1">
+        <div className="i1 sm:block hidden">
           <img src={i1} alt="" />
         </div>
-        <div className="i2 sm:block hidden">
+        <div className="i2">
           <img src={i2} alt="" />
         </div>
         <div className="i3">
@@ -31,16 +31,16 @@ const Gallery = () => {
         <div className="i4">
           <img src={i4} alt="" />
         </div>
-        <div className="i5 sm:block hidden">
+        <div className="i5">
           <img src={i5} alt="" />
         </div>
-        <div className="i6">
+        <div className="i6 sm:block hidden">
           <img src={i6} alt="" />
         </div>
-        <div className="i7">
+        <div className="i7 sm:block hidden">
           <img src={i7} alt="" />
         </div>
-        <div className="i8 sm:block hidden">
+        <div className="i8">
           <img src={i8} alt="" />
         </div>
         <div className="i9">
@@ -49,10 +49,10 @@ const Gallery = () => {
         <div className="i10">
           <img src={i10} alt="" />
         </div>
-        <div className="i11 sm:block hidden">
+        <div className="i11">
           <img src={i11} alt="" />
         </div>
-        <div className="i12">
+        <div className="i12 sm:block hidden">
           <img src={i12} alt="" />
         </div>
       </div>

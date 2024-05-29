@@ -1,0 +1,90 @@
+.grid_category {
+  display: grid;
+  gap: 20px;
+  grid-template-areas:
+    "g1 g1 g2 g3"
+    "g1 g1 g6 g6"
+    "g4 g5 g6 g6";
+}
+.grid_category .grid_box {
+  border-radius: 15px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  position: relative;
+}
+.grid_category .grid_box img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.grid_name{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.grid_name div{
+  position: relative;
+}
+.grid_name div p:first-child{
+  font-size: 19px;
+  font-weight: 600;
+}
+.grid_name div p:last-child{
+  font-size: 12px;
+}
+.grid_clip_path{
+  position: absolute;
+  bottom: 5px;
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 6% 47%);
+  background-color: #fff;
+  padding: 5px;
+  padding-left: 60px;
+}
+.grid_clip_path p{
+  font-size: 14px;
+  font-weight: 600;
+}
+.g1 {
+  grid-area: g1;
+  width: 100%;
+}
+.g2 {
+  grid-area: g2;
+  width: 100%;
+}
+.g3 {
+  grid-area: g3;
+  width: 100%;
+}
+.g4 {
+  grid-area: g4;
+  width: 100%;
+}
+.g5 {
+  grid-area: g5;
+  width: 100%;
+}
+.g6 {
+  grid-area: g6;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .grid_category {
+    display: grid;
+    gap: 15px;
+    grid-template-areas:
+      "g1"
+      "g2"
+      "g3"
+      "g4"
+      "g5"
+      "g6";
+  }
+  .grid_category img {
+    width: 100%;
+    border-radius: 20px;
+  }
+}

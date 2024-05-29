@@ -5,7 +5,7 @@
   font-family: "Nunito", sans-serif;
   margin: 0;
 }
-
+/* clip-path: polygon(51% 1%, 100% 0%, 100% 100%, 41% 99%, 0% 50%); */
 .bg_img1 {
   background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)), url("./assets/home4.webp");
   background-size: 100% 650px;
@@ -190,7 +190,7 @@ a.active {
     "i10 i10 i10 i10 i10 i11 i11 i11 i11 i11 i12 i12";
 }
 .gallery div {
-  height: 300px;
+  /* height: 300px; */
   border-radius: 15px;
   margin: 0;
   padding: 0;
@@ -702,7 +702,7 @@ a.active {
 .autoslider_img {
   position: relative;
   width: 100%;
-  height: 24rem;
+  /* height: 20rem; */
   margin-bottom: 40px;
 }
 .autoslider_img img {
@@ -803,12 +803,17 @@ a.active {
     display: grid;
     gap: 15px;
     grid-template-areas:
-      "i1 i1 i3 i3 i3 i3"
-      "i4 i4 i4 i4 i6 i6"
-      "i7 i7 i9 i9 i9 i9"
-      "i10 i10 i10 i10 i12 i12";
+      "i2"
+      "i3"
+      "i4"
+      "i5"
+      "i8"
+      "i9"
+      "i10"
+      "i11";
   }
   .gallery img {
+    width: 100%;
     border-radius: 20px;
   }
   .common_title {
