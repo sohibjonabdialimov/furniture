@@ -78,36 +78,6 @@ a.active {
   justify-content: center;
   font-size: 14px;
 }
-/* furniture page */
-.furniture_wrap {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 35px;
-  padding-bottom: 150px;
-}
-.furniture_item {
-  width: 100%;
-  border: 0.5px solid #eee;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-.furniture_item:hover {
-  border: 0.5px solid #bbb;
-  box-shadow: 15px 15px 25px #aaaaaa4e;
-}
-
-.furniture_img {
-  width: 100%;
-  background-color: #f9f9f9;
-  border-radius: 20px 20px 20px 0;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.furniture_img img {
-  object-fit: cover;
-}
 .cards_img {
   width: 100%;
   height: 24rem;
@@ -128,6 +98,38 @@ a.active {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+/* furniture page */
+.furniture_wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+  gap: 25px;
+  padding-bottom: 150px;
+}
+.furniture_item {
+  width: 100%;
+  border: 0.5px solid #eee;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.furniture_item:hover {
+  border: 0.5px solid #bbb;
+  box-shadow: 15px 15px 25px #aaaaaa4e;
+}
+
+.furniture_img {
+  width: 100%;
+  height: 400px;
+  background-color: #f9f9f9;
+  border-radius: 20px 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.furniture_img img {
+  object-fit: cover;
+}
+
 
 .furniture_ad_card:hover {
   box-shadow: 10px 10px 10px #00000055;
@@ -178,6 +180,118 @@ a.active {
 }
 .furniture_content p {
   color: #444;
+}
+
+.newsCard {
+  position: relative;
+  width: 100%;
+  height: auto;
+  height: fit-content;
+  margin: 0 auto;
+  background-color: #fff;
+  color:#fff;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+}
+
+.newsCaption {
+  position: absolute;
+  bottom: 0;
+  opacity: .6;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  padding: 15px;
+  -webkit-transform: translateY(83%);
+          transform: translateY(83%);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: opacity 0.1s 0.3s, -webkit-transform 0.4s;
+  transition: opacity 0.1s 0.3s, -webkit-transform 0.4s;
+  transition: transform 0.4s, opacity 0.1s 0.3s;
+  transition: transform 0.4s, opacity 0.1s 0.3s, -webkit-transform 0.4s;
+  border-radius: 10px;
+  text-align: center;
+}
+.newsCaption h2{
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: 700;
+}
+.newsCard_img {
+  width: 100%;
+}
+.newsCard_img img{
+  width: 100%;
+  object-fit: cover;
+}
+.newsCaption-title {
+  margin-top: 0px;
+}
+
+.newsCaption-content p:first-child{
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.newsCaption_prise p:first-child{
+  color: red;
+  font-weight: 700;
+  font-size: 20px;
+}
+.newsCaption_prise{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 5px 0;
+}
+.newsCaption_color{
+  margin-bottom: 5px;
+}
+.newsCaption_prise p:last-child{
+  text-decoration-line: line-through;
+  opacity: 0.5;
+}
+.newsCaption_color, .newsCaption_country{
+  font-weight: 700;
+}
+.newsCaption_color span, .newsCaption_country span{
+  font-weight: 500;
+}
+.newsCaption-link {
+  text-decoration: none;
+  padding: 5px 15px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.15s;
+          transition-duration: 0.15s;
+  -webkit-transition-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
+          transition-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+.newsCaption-link:hover {
+  opacity: 0.65;
+}
+
+.news-Slide-up:hover .newsCaption {
+  opacity: .65;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: opacity 0.1s, -webkit-transform 0.4s;
+  transition: opacity 0.1s, -webkit-transform 0.4s;
+  transition: transform 0.4s, opacity 0.1s;
+  transition: transform 0.4s, opacity 0.1s, -webkit-transform 0.4s;
 }
 /* gallery page */
 .gallery {
@@ -772,6 +886,9 @@ a.active {
   color: #fff;
   font-size: 15px;
 }
+
+
+
 @media (max-width: 800px) {
   .map_wrap svg {
     width: 40px;
