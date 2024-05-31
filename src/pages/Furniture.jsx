@@ -148,7 +148,7 @@ const Furniture = () => {
                 <div className="newsCaption">
                   <h2 className="newsCaption-title">{item.name}</h2>
                   <div className="newsCaption-content">
-                    <p>{item.description}</p>
+                    {/* <p>{item.description}</p> */}
                     <div className="newsCaption_prise">
                       <p>{formatPrice(item.current_price)} UZS</p>
                       <p>{formatPrice(item.discount_price)}</p>
@@ -157,7 +157,7 @@ const Furniture = () => {
                       Asosiy rangi: <span>{item.color}</span>
                     </p>
                     <p className="newsCaption_country">
-                      Ishlab chiqarilgan mamlakati: <span>{item.country}</span>
+                      Ishlab chiqarilgan: <span>{item.country}</span>
                     </p>
                   </div>
                   <p>
