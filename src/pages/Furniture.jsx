@@ -4,7 +4,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { formatPrice } from "../utils/formatPrise";
 import { Link, useNavigate } from "react-router-dom";
-import { colors } from "@mui/material";
 const info = [
   {
     id: 1,
@@ -142,13 +141,13 @@ const Furniture = () => {
         <div className="furniture_wrap">
           {info.map((item) => {
             return (
-              <div class="newsCard  news-Slide-up">
+              <div key={item.id} className="newsCard  news-Slide-up">
                 <div className="newsCard_img">
                   <img src={item.img} />
                 </div>
-                <div class="newsCaption">
-                  <h2 class="newsCaption-title">{item.name}</h2>
-                  <div class="newsCaption-content">
+                <div className="newsCaption">
+                  <h2 className="newsCaption-title">{item.name}</h2>
+                  <div className="newsCaption-content">
                     <p>{item.description}</p>
                     <div className="newsCaption_prise">
                       <p>{formatPrice(item.current_price)} UZS</p>
@@ -163,7 +162,7 @@ const Furniture = () => {
                   </div>
                   <p>
                     <Link
-                      class="newsCaption-link"
+                      className="newsCaption-link"
                       to={`/furnitures/${item.id}`}
                     >
                       Batafsil

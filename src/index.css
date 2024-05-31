@@ -204,8 +204,8 @@ a.active {
   height: 100%;
   background-color: #000;
   padding: 15px;
-  -webkit-transform: translateY(83%);
-          transform: translateY(83%);
+  -webkit-transform: translateY(calc( 100% - 50px ));
+          transform: translateY(calc( 100% - 50px ));
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   -webkit-transition: opacity 0.1s 0.3s, -webkit-transform 0.4s;
@@ -701,11 +701,11 @@ a.active {
   width: 62dvw;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   margin-right: 20px;
 }
 .order_right {
-  width: 28dvw;
+  width: 25dvw;
   float: right;
   background-color: #ececec;
   position: sticky;
@@ -716,7 +716,22 @@ a.active {
   margin-bottom: 80px;
   margin-top: 130px;
   z-index: 10;
-  border-radius: 25px;
+  border-radius: 10px;
+}
+.order_form{
+  background-color: #ececec;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+.order_form button{
+  background-color: #1677FFFF;
+  color: #fff;  
+  border-radius: 10px;
+  padding: 8px;
 }
 .order_sum {
   width: 100%;
@@ -724,13 +739,13 @@ a.active {
   padding: 15px;
   margin-bottom: 80px;
   margin-top: 50px;
-  border-radius: 25px;
+  border-radius: 10px;
 }
 .order_right h2 {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 .order_right p:first-child {
@@ -741,22 +756,22 @@ a.active {
 }
 
 .order_card {
-  padding: 15px 20px;
-  border-radius: 25px;
+  padding: 10px;
+  border-radius: 10px;
   background-color: #ececec;
   display: grid;
   gap: 10px;
   justify-content: space-between;
-  grid-template-columns: 200px 430px auto;
+  grid-template-columns: 180px 400px auto;
 }
 .order_img {
   width: 100%;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 .order_img img {
   width: 100%;
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 .order_info_buttons {
   background-color: #1f2937;
@@ -930,6 +945,19 @@ a.active {
   }
 }
 @media (max-width: 600px) {
+  .order_sum {
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+  .order_form{
+    background-color: #ececec;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
   .furniture_wrap {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1016,12 +1044,12 @@ a.active {
   }
   .order_img {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 5px;
   }
   .order_img img {
     width: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 5px;
   }
 
   .order_content {
