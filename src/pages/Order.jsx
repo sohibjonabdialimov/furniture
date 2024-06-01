@@ -6,7 +6,7 @@ import clear from "../assets/delete.png";
 import exp from "../assets/10.jpg";
 import { Link } from "react-router-dom";
 
-import { Controller, useForm, useFormContext } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Form, Input } from "antd";
 const { TextArea } = Input;
 import { useNavigate } from "react-router-dom";

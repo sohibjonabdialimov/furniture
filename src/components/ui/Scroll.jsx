@@ -12,7 +12,7 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 550) {
+      if (window.pageYOffset > 500) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

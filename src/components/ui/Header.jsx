@@ -39,13 +39,13 @@ const Header = () => {
                 <img className="object-cover" src={basket} alt="" />
                 <p>0</p>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to={"/saved"}
                 className="block w-[30px] h-[30px] header_img"
               >
                 <img className="object-cover" src={saved} alt="" />
                 <p>0</p>
-              </NavLink>
+              </NavLink> */}
             </div>
             <button
               onClick={() => openNavbarFunction()}
@@ -104,10 +104,10 @@ const Header = () => {
               <img className="object-cover" src={basket} alt="" />
               <p>0</p>
             </NavLink>
-            <NavLink to={"/saved"} className="w-[30px] h-[30px] header_img">
+            {/* <NavLink to={"/saved"} className="w-[30px] h-[30px] header_img">
               <img className="object-cover" src={saved} alt="" />
               <p>0</p>
-            </NavLink>
+            </NavLink> */}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <NavLink

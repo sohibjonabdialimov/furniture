@@ -24,6 +24,8 @@ import "./style/dark.scss";
 import { AuthContext } from "./context/AuthContext";
 import OneFurniture from "./pages/oneFurniture/OneFurniture";
 import MainCategory from "./pages/MainCategory";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -37,6 +39,8 @@ function App() {
       <div className={darkMode ? "app dark" : "app"}>
         <BrowserRouter>
           <Routes>
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
             <Route path="/" element={<UsersLayout />}>
               <Route index element={<Dashboard />} />
               {/* <Route path="furnitures" element={<Furniture />} /> */}
