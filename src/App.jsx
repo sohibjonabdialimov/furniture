@@ -26,6 +26,8 @@ import OneFurniture from "./pages/oneFurniture/OneFurniture";
 import MainCategory from "./pages/MainCategory";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import NewCategory from "./pages/newCategory/NewCategory";
+import CategoryList from "./pages/categoryList/CategoryList";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -93,7 +95,7 @@ function App() {
                   path="add"
                   element={
                     <RequireAuth>
-                      <Add inputs={adminInputs} title="Add New User" />
+                      <Add inputs={adminInputs} title="Yangi admin qo'shish" />
                     </RequireAuth>
                   }
                 />
@@ -119,7 +121,33 @@ function App() {
                   path="new"
                   element={
                     <RequireAuth>
-                      <New inputs={productInputs} title="Add New Product" />
+                      <New inputs={productInputs} title="Yangi mahsulot qo'shish" />
+                    </RequireAuth>
+                  }
+                />
+              </Route>
+              <Route path="categories">
+                <Route
+                  index
+                  element={
+                    <RequireAuth>
+                      <CategoryList />
+                    </RequireAuth>
+                  }
+                />
+                {/* <Route
+                  path=":productId"
+                  element={
+                    <RequireAuth>
+                      <Single />
+                    </RequireAuth>
+                  }
+                /> */}
+                <Route
+                  path="new"
+                  element={
+                    <RequireAuth>
+                      <NewCategory title="Yangi kategoriya qo'shish" />
                     </RequireAuth>
                   }
                 />

@@ -44,25 +44,31 @@ const Sidebar = () => {
           <Link to="/admin/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Users</span>
+              <span>Adminlar</span>
+            </li>
+          </Link>
+          <Link to="/admin/categories" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>Kategoriyalar</span>
             </li>
           </Link>
           <Link to="/admin/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
-              <span>Products</span>
+              <span>Mahsulotlar</span>
             </li>
           </Link>
           <Link to="/admin/messages" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
-              <span>Messages</span>
+              <span>Xabarlar</span>
             </li>
           </Link>
-          <li>
+          {/* <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
-          </li>
+          </li> */}
           {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

@@ -51,5 +51,23 @@ export const Product = [
     field: "price",
     headerName: "Price",
     width: 150,
+    
+  },
+];
+export const Category = [
+  { field: "uuid", headerName: "ID", width: 500 },
+  {
+    field: "categoryName",
+    headerName: "Kategoriya nomi",
+    width: 400,
+    renderCell: (params) => {
+      console.log(params);
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.categoryImage} alt="avatar" />
+          {params.row.categoryName}
+        </div>
+      );
+    },
   },
 ];
