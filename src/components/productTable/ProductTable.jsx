@@ -3,38 +3,20 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Product } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-
+import { axiosT } from "../../services/api/axios";
 const ProductTable = () => {
   const [data, setData] = useState([]);
 
+  function fetchProducts() {
+    axiosT.get("/admin/getAllProducts").then((response) => {
+      setData(response.data.allCategory);
+    });
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        querySnapshot.forEach((doc) => {
-          console.log(doc);
-          list.push({id: doc.id, ...doc.data()});
-        });
-        setData(list);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
+    fetchProducts();
   }, []);
 
-
-  const handleDelete = async (id) => {
-    try{
-      await deleteDoc(doc(db, "products", id));
-      setData(data.filter((item) => item.id !== id));
-    }catch(err){
-      console.log(err);
-    }
-  };
+  const handleDelete = async (id) => {};
 
   const actionColumn = [
     {
@@ -69,6 +51,7 @@ const ProductTable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
+        getRowId={(row) => row.uuid}
         columns={Product?.concat(actionColumn)}
         pageSize={10}
         rowsPerPageOptions={[9]}

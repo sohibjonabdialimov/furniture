@@ -11,7 +11,6 @@ const CategoryTable = () => {
   function fetchProducts() {
     axiosT.get("/admin/getAllCategory").then((response) => {
       setData(response.data.allCategory);
-      console.log(data);
     });
   }
   useEffect(() => {

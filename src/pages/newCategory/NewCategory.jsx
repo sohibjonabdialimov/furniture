@@ -70,7 +70,7 @@ const NewCategory = ({ title }) => {
                   ref={nameRef}
                 />
               </div>
-              <button type="submit">Jo'natish</button>
+              <button type="submit">Kategoriya yaratish</button>
             </form>
           </div>
         </div>

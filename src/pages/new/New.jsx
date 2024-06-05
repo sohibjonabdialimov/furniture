@@ -2,78 +2,64 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { db, storage } from "../../firebase";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useRef, useState } from "react";
+import { axiosT } from "../../services/api/axios";
 import { useNavigate } from "react-router-dom";
 
-const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
-  const [data, setData] = useState({});
-  const [per, setPer] = useState(null);
+const New = ({ title }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    const uploadFile = () => {
-      const name = new Date().getTime() + file.name;
-      console.log(name);
-      const storageRef = ref(storage, name);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          setPer(progress);
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-            default:
-              break;
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setData((prev) => ({ ...prev, img: downloadURL }));
-          });
-        }
-      );
-    };
-
-    file && uploadFile();
-  }, [file]);
-
-  const handleInput = (e) => {
-    const id = e.target.id;
-    const value = e.target.value;
-    setData({ ...data, [id]: value });
-  };
+  const [file, setFile] = useState("");
+  const imgRef = useRef(null);
+  const idRef = useRef(null);
+  const discountRef = useRef(null);
+  const currentRef = useRef(null);
+  const descRef = useRef(null);
+  const countryRef = useRef(null);
+  const colorRef = useRef(null);
+  const heightRef = useRef(null);
+  const weightRef = useRef(null);
+  const lengthRef = useRef(null);
+  const nameRef = useRef(null);
 
   const handleAdd = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
 
-    try {
-      await addDoc(collection(db, "products"), {
-        ...data,
-        timeStamp: serverTimestamp(),
+    formData.append("category_id", idRef.current.value);
+    formData.append("img", imgRef.current.files[0]);
+    formData.append("name", nameRef.current.value);
+    formData.append("discount_price", discountRef.current.value);
+    formData.append("current_price", currentRef.current.value);
+    formData.append("is_saved", false);
+    formData.append("is_favorite", false);
+    formData.append("description", descRef.current.value);
+    formData.append("country", countryRef.current.value);
+    formData.append("is_modern", false);
+    formData.append("color", colorRef.current.value);
+    formData.append("height", heightRef.current.value);
+    formData.append("weight", weightRef.current.value);
+    formData.append("length", lengthRef.current.value);
+    console.log(idRef.current.value);
+    axiosT
+      .post("/admin/createProduct", formData)
+      .then((res) => {
+        // idRef.current.value = "";
+        // nameRef.current.value = "";
+        // imgRef.current.value = "";
+        // discountRef.current.value = "";
+        // currentRef.current.value = "";
+        // descRef.current.value = "";
+        // countryRef.current.value = "";
+        // colorRef.current.value = "";
+        // heightRef.current.value = "";
+        // weightRef.current.value = "";
+        // lengthRef.current.value = "";
+        // setFile("");
+        // navigate("/admin/products");
+      })
+      .catch((err) => {
+        console.log(err);
       });
-
-      navigate(-1);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -105,25 +91,95 @@ const New = ({ inputs, title }) => {
                   <input
                     type="file"
                     id="file"
+                    ref={imgRef}
                     onChange={(e) => setFile(e.target.files[0])}
                     style={{ display: "none" }}
                   />
                 </div>
               </div>
 
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
+              <div className="formInput">
+                  <label>Kategoriya ID si</label>
                   <input
-                    id={input.id}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    onChange={handleInput}
+                    type="text"
+                    ref={idRef}
+                    placeholder="id"
                   />
                 </div>
-              ))}
-              <button disabled={per !== null && per < 100} type="submit">
-                Jo'natish
+              <div className="formInput">
+                  <label>Mahsulot nomi</label>
+                  <input
+                    type="text"
+                    ref={nameRef}
+                    placeholder="Stol"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Chegirma narxi</label>
+                  <input
+                    type="number"
+                    ref={discountRef}
+                    placeholder="1200000"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Joriy narxi</label>
+                  <input
+                    type="number"
+                    ref={currentRef}
+                    placeholder="1100000"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Mahsulotning mamlakati</label>
+                  <input
+                    type="text"
+                    ref={countryRef}
+                    placeholder="Italiya"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Rangi</label>
+                  <input
+                    type="text"
+                    ref={colorRef}
+                    placeholder="qizil"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Balandligi</label>
+                  <input
+                    type="number"
+                    ref={heightRef}
+                    placeholder="121"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Eni</label>
+                  <input
+                    type="number"
+                    ref={weightRef}
+                    placeholder="122"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Uzunligi</label>
+                  <input
+                    type="number"
+                    ref={lengthRef}
+                    placeholder="123"
+                  />
+                </div>
+              <div className="formInput">
+                  <label>Mahsulot ta'rifi</label>
+                  <input
+                  type="text"
+                    ref={descRef}
+                    placeholder="lorem ipsum"
+                  />
+                </div>
+              <button type="submit">
+                Mahsulot qo'shish
               </button>
             </form>
           </div>

@@ -22,14 +22,14 @@ export const userColumns = [
   },
 ];
 export const Product = [
-  { field: "id", headerName: "ID", width: 220 },
+  { field: "uuid", headerName: "ID", width: 220 },
   {
     field: "name",
     headerName: "Name",
     width: 230,
     renderCell: (params) => {
       return (
-        <div className="cellWithImg">
+        <div key={params.row.uuid} className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="avatar" />
           {params.row.name}
         </div>
@@ -37,22 +37,50 @@ export const Product = [
     },
   },
   {
-    field: "category",
-    headerName: "Category",
+    field: "category_id",
+    headerName: "Kategoriya ID",
     width: 230,
   },
 
   {
-    field: "count",
-    headerName: "Number of products",
+    field: "name",
+    headerName: "Mahsulot nomi",
     width: 150,
   },
   {
-    field: "price",
-    headerName: "Price",
+    field: "current_price",
+    headerName: "Hozirgi narxi",
     width: 150,
     
   },
+  {
+    field: "discount_price",
+    headerName: "Chegirma narxi",
+    width: 150,
+  },
+  {
+    field: "height",
+    headerName: "Balandligi",
+    width: 150,
+    
+  },
+  {
+    field: "weight",
+    headerName: "Eni",
+    width: 150,
+  },
+  {
+    field: "length",
+    headerName: "Uzunligi",
+    width: 150,
+    
+  },
+  {
+    field: "country",
+    headerName: "Uzunligi",
+    width: 150,
+    
+  }
 ];
 export const Category = [
   { field: "uuid", headerName: "ID", width: 500 },
@@ -61,9 +89,8 @@ export const Category = [
     headerName: "Kategoriya nomi",
     width: 400,
     renderCell: (params) => {
-      console.log(params);
       return (
-        <div className="cellWithImg">
+        <div key={params.row.uuid} className="cellWithImg">
           <img className="cellImg" src={params.row.categoryImage} alt="avatar" />
           {params.row.categoryName}
         </div>
