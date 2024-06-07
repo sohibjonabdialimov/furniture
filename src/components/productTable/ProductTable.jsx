@@ -4,6 +4,7 @@ import { Product } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { axiosT } from "../../services/api/axios";
+import { ToastContainer, toast } from "react-toastify";
 const ProductTable = () => {
   const [data, setData] = useState([]);
 
@@ -16,7 +17,15 @@ const ProductTable = () => {
     fetchProducts();
   }, []);
 
-  const handleDelete = async (id) => {};
+  const handleDelete = async (id) => {
+    axiosT.delete(`/admin/deleteProductBy/${id}`).then((response) => {
+      console.log(response);
+      toast.info("Mahsulot o'chirildi", {
+        position: "top-right",
+      });
+      fetchProducts();
+    });
+  };
 
   const actionColumn = [
     {
@@ -31,7 +40,7 @@ const ProductTable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.uuid)}
             >
               Delete
             </div>
@@ -42,6 +51,18 @@ const ProductTable = () => {
   ];
   return (
     <div className="datatable">
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="datatableTitle">
         Add New Product
         <Link to="/admin/products/new" className="link">
@@ -55,7 +76,7 @@ const ProductTable = () => {
         columns={Product?.concat(actionColumn)}
         pageSize={10}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

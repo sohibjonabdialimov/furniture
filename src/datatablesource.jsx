@@ -1,36 +1,38 @@
+import { formatImage } from "./utils/formatImage";
+
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 270 },
+  { field: "uuid", headerName: "ID", width: 270 },
   {
-    field: "displayName",
+    field: "fullName",
     headerName: "Full Name",
-    width: 250,
+    width: 300,
   },
   {
     field: "email",
     headerName: "Email",
-    width: 250,
+    width: 280,
   },
   {
-    field: "password",
-    headerName: "Password",
-    width: 150,
+    field: "phoneNumber",
+    headerName: "Phone number",
+    width: 200,
   },
   {
-    field: "phone",
-    headerName: "Phone",
-    width: 150,
+    field: "address",
+    headerName: "Address",
+    width: 350,
   },
 ];
 export const Product = [
-  { field: "uuid", headerName: "ID", width: 220 },
+  { field: "uuid", headerName: "ID", width: 340 },
   {
     field: "name",
-    headerName: "Name",
+    headerName: "Mahsulot nomi",
     width: 230,
     renderCell: (params) => {
       return (
         <div key={params.row.uuid} className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+          <img className="cellImg" src={formatImage(params.row.img)} alt="avatar" />
           {params.row.name}
         </div>
       );
@@ -39,19 +41,13 @@ export const Product = [
   {
     field: "category_id",
     headerName: "Kategoriya ID",
-    width: 230,
+    width: 325,
   },
 
-  {
-    field: "name",
-    headerName: "Mahsulot nomi",
-    width: 150,
-  },
   {
     field: "current_price",
     headerName: "Hozirgi narxi",
     width: 150,
-    
   },
   {
     field: "discount_price",
@@ -62,7 +58,6 @@ export const Product = [
     field: "height",
     headerName: "Balandligi",
     width: 150,
-    
   },
   {
     field: "weight",
@@ -73,28 +68,37 @@ export const Product = [
     field: "length",
     headerName: "Uzunligi",
     width: 150,
-    
   },
   {
     field: "country",
-    headerName: "Uzunligi",
+    headerName: "Mamlakati",
     width: 150,
-    
-  }
+  },
 ];
 export const Category = [
-  { field: "uuid", headerName: "ID", width: 500 },
+  { field: "uuid", headerName: "ID", width: 380 },
   {
     field: "categoryName",
     headerName: "Kategoriya nomi",
-    width: 400,
+    width: 300,
     renderCell: (params) => {
       return (
         <div key={params.row.uuid} className="cellWithImg">
-          <img className="cellImg" src={params.row.categoryImage} alt="avatar" />
+          <img
+            className="cellImg"
+            src={formatImage(params.row.categoryImage)}
+            alt="avatar"
+          />
           {params.row.categoryName}
         </div>
       );
     },
+    
   },
+  {
+    field: "productCount",
+    headerName: "Mahsulotlar soni",
+    width: 150,
+  },
+
 ];

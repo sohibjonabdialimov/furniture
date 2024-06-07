@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { MyOrderProvider } from "./services/providers/orderContext.jsx";
 import { FurnituresProvider } from "./services/providers/furnitures.jsx";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "./services/providers/authContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -16,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthContextProvider>
         <MyOrderProvider>
           <FurnituresProvider>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </FurnituresProvider>
         </MyOrderProvider>
       </AuthContextProvider>

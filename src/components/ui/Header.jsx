@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import basket from "../../assets/basket.png";
-import saved from "../../assets/heart.png";
 
 const Header = () => {
   const hidden = useRef();
@@ -11,6 +10,7 @@ const Header = () => {
   function closeNavbarFunction() {
     hidden.current?.classList.add("hidden");
   }
+  const navigate = useNavigate();
   return (
     <>
       <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -109,13 +109,26 @@ const Header = () => {
               <p>0</p>
             </NavLink> */}
           </div>
+          {}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <NavLink
-              to={"/feedback"}
-              className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-4 rounded"
-            >
-              Fikr-mulohazalar <span aria-hidden="true">&rarr;</span>
-            </NavLink>
+            {JSON.parse(localStorage.getItem("user_data")) ? (
+              <NavLink
+                to={"/login"}
+                onClick={() => {
+                  localStorage.removeItem("user_data");
+                }}
+                className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-4 rounded"
+              >
+                Chiqish <span aria-hidden="true">&rarr;</span>
+              </NavLink>
+            ) : (
+              <NavLink
+                to={"/login"}
+                className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-4 rounded"
+              >
+                Kirish <span aria-hidden="true">&rarr;</span>
+              </NavLink>
+            )}
           </div>
         </nav>
         <div
@@ -194,10 +207,10 @@ const Header = () => {
                   </NavLink>
                   <div className="lg:hidden flex lg:flex-1 lg:justify-end">
                     <NavLink
-                      to={"/feedback"}
+                      to={"/login"}
                       className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded"
                     >
-                      Fikr-mulohazalar uchun
+                      Kirish
                       <span aria-hidden="true">&rarr;</span>
                     </NavLink>
                   </div>

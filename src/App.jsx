@@ -21,19 +21,20 @@ import Order from "./pages/Order";
 import Saved from "./pages/Saved";
 import "./App.css";
 import "./style/dark.scss";
-import { AuthContext } from "./context/AuthContext";
 import OneFurniture from "./pages/oneFurniture/OneFurniture";
 import MainCategory from "./pages/MainCategory";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NewCategory from "./pages/newCategory/NewCategory";
 import CategoryList from "./pages/categoryList/CategoryList";
+import AdminRegisterPage from "./pages/AdminRegisterPage";
+import { authContext } from "./services/providers/authContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-  const { currentUser } = useContext(AuthContext);
+  const { auth } = useContext(authContext);
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/admin/login" />;
+    return auth ? children : <Navigate to="/admin/login" />;
   };
   console.log(import.meta.env.VITE_FIREBASE_KEY);
   return (
@@ -95,7 +96,7 @@ function App() {
                   path="add"
                   element={
                     <RequireAuth>
-                      <Add inputs={adminInputs} title="Yangi admin qo'shish" />
+                      <AdminRegisterPage />
                     </RequireAuth>
                   }
                 />

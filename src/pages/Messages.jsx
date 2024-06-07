@@ -3,26 +3,19 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
+import { axiosT } from "../services/api/axios";
 const Messages = () => {
   const [data, setData] = useState([]);
 
+  function fetchProducts() {
+    axiosT.get("/admin/getAllCommet").then((response) => {
+      setData(response.data.commets);
+      console.log(response.data);
+    });
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(db, "comments"));
-        querySnapshot.forEach((doc) => {
-          console.log(doc);
-          list.push({ id: doc.id, ...doc.data() });
-        });
-        setData(list);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
+    fetchProducts();
   }, []);
-  console.log(data);
   return (
     <div className="home">
       <Sidebar />
@@ -33,12 +26,12 @@ const Messages = () => {
           <div className="wrap">
             {data.map((item, index) => {
               return (
-                <div key={item.id} className="wrap_item">
+                <div key={item.uuid} className="wrap_item">
                   <div className="index"><b>{index + 1}.</b></div>
                   <div className="info">
-                    <h2><b>Ism:</b> {item.name}</h2>
+                    <h2><b>Ism:</b> {item.fullName}</h2>
                     <p><b>Email:</b> {item.email}</p>
-                    <p><b>Xabar:</b> {item.message}</p>
+                    <p><b>Xabar:</b> {item.commets}</p>
                   </div>
                 </div>
               );

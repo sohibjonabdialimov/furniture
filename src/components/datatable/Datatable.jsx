@@ -3,36 +3,28 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { axiosT } from "../../services/api/axios";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
 
+  function fetchProducts() {
+    axiosT.get("/allAdmins").then((response) => {
+      setData(response.data);
+    });
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        querySnapshot.forEach((doc) => {
-          console.log(doc);
-          list.push({ id: doc.id, ...doc.data() });
-        });
-        setData(list);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
+    fetchProducts();
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "users", id));
-      setData(data.filter((item) => item.id !== id));
-    } catch (err) {
-      console.log(err);
-    }
+    axiosT.delete(`/adminDelete/${id}`).then((response) => {
+      console.log(response);
+      toast.info("Admin o'chirildi", {
+        position: "top-right",
+      });
+      fetchProducts();
+    });
   };
 
   const actionColumn = [
@@ -48,7 +40,7 @@ const Datatable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.uuid)}
             >
               Delete
             </div>
@@ -68,10 +60,11 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
+        getRowId={(row) => row.uuid}
         columns={userColumns?.concat(actionColumn)}
         pageSize={10}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

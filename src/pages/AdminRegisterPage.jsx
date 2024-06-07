@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { axiosT } from "../services/api/axios";
 import { ToastContainer, toast } from "react-toastify";
 const { TextArea } = Input;
-const RegisterPage = () => {
+const AdminRegisterPage = () => {
   const {
     control,
     getValues,
@@ -17,11 +17,11 @@ const RegisterPage = () => {
     const data = getValues().REGISTER;
     console.log(data);
     axiosT
-      .post("/user/auth/signup", data)
+      .post("/admin/auth/signup", data)
       .then((response) => {
         console.log(response);
         localStorage.setItem("user_data", JSON.stringify(response.data.data));
-        navigate("/");
+        navigate("/admin/users");
       })
       .catch((err) => {
         console.log(err);
@@ -170,14 +170,6 @@ const RegisterPage = () => {
             >
               Ro'yxatdan o'tish
             </button> 
-            <p className="mt-10 text-center text-sm text-gray-500">
-              <Link
-                to={"/login"}
-                className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-              >
-                Akkauntingiz bormi?
-              </Link>
-            </p>
           </div>
         </Form>
       </div>
@@ -185,4 +177,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default AdminRegisterPage;

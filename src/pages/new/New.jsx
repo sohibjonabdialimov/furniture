@@ -5,6 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useRef, useState } from "react";
 import { axiosT } from "../../services/api/axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const New = ({ title }) => {
   const navigate = useNavigate();
@@ -43,6 +44,10 @@ const New = ({ title }) => {
     axiosT
       .post("/admin/createProduct", formData)
       .then((res) => {
+        console.log(res.data);
+        toast.info("Mahsulot yaratildi", {
+          position: "top-right",
+        });
         // idRef.current.value = "";
         // nameRef.current.value = "";
         // imgRef.current.value = "";
@@ -59,11 +64,26 @@ const New = ({ title }) => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Xatolik yuz berdi", {
+          position: "top-right",
+        });
       });
   };
 
   return (
     <div className="new1">
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Sidebar />
       <div className="newContainer">
         <Navbar />

@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useRef, useState } from "react";
 import { axiosT } from "../../services/api/axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const NewCategory = ({ title }) => {
   const [file, setFile] = useState("");
@@ -18,17 +19,38 @@ const NewCategory = ({ title }) => {
     formData.append("categoryImage", imgRef.current.files[0]);
     formData.append("productCount", 0);
     console.log(formData);
-    axiosT.post("/admin/createCategory", formData).then((res) => {
-      console.log(res);
-      nameRef.current.value = "";
-      setFile("");
-    }).catch((err) => {
-      console.log(err);
-    });
+    axiosT
+      .post("/admin/createCategory", formData)
+      .then((res) => {
+        console.log(res.data);
+        toast.info("Kategoriya yaratildi", {
+          position: "top-right",
+        });
+        nameRef.current.value = "";
+        setFile("");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Xatolik yuz berdi", {
+          position: "top-right",
+        });
+      });
   };
 
   return (
     <div className="new1">
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Sidebar />
       <div className="newContainer">
         <Navbar />

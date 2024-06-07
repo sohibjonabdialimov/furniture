@@ -1,7 +1,9 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { axiosT } from "../services/api/axios";
+import { toast, ToastContainer } from "react-toastify";
 const LoginPage = () => {
   const {
     control,
@@ -9,13 +11,38 @@ const LoginPage = () => {
     reset: BranchReset,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   const submitHandler = () => {
     const data = getValues().LOGIN;
-    console.log(data);
-    console.log("Hello");
+    axiosT
+      .post("/user/auth/signin", data)
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("user_data", JSON.stringify(response.data.data));
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Email yoki parol xato", {
+          position: "top-right",
+        });
+      });
   };
   return (
     <div className="container">
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
       <div className="min-h-[90dvh] px-6 lg:px-32 mx-auto">
         <h1 className="common_title">Kirish</h1>
         <Form
@@ -54,7 +81,7 @@ const LoginPage = () => {
                   required: "Field is required",
                 }}
                 control={control}
-                name="REGISTER.password"
+                name="LOGIN.password"
                 render={({ field }) => {
                   return (
                     <>

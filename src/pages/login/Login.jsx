@@ -1,33 +1,51 @@
-import { useContext, useState } from "react";
+import { useContext, useRef } from "react";
 import "./login.scss";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { axiosT } from "../../services/api/axios";
+import { authContext } from "../../services/providers/authContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const [error, setError] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const { setAuth } = useContext(authContext);
   const navigate = useNavigate();
-  const { dispatch } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch({ type: "LOGIN", payload: user });
-        setError(false);
+    let data = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    axiosT
+      .post("/admin/auth/signin", data)
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("admin", JSON.stringify(response.data.data));
+        setAuth(JSON.stringify(response.data.data));
         navigate("/admin");
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        setError(true);
+      .catch((err) => {
+        console.log(err);
+        toast.error("Email yoki parol xato", {
+          position: "top-right",
+        });
       });
   };
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 lg:px-8 sm:w-[400px] w-auto mx-auto h-[100dvh]">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -47,8 +65,8 @@ const Login = () => {
               <div className="mt-2">
                 <input
                   id="email"
-                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
+                  ref={emailRef}
                   type="email"
                   autoComplete="email"
                   required
@@ -66,8 +84,8 @@ const Login = () => {
               </label>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
                   id="password"
+                  ref={passwordRef}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -84,9 +102,6 @@ const Login = () => {
               >
                 Kirish
               </button>
-              {error && (
-                <span className="error_text">Email yoki parol xato</span>
-              )}
             </div>
           </form>
           <p className="mt-10 text-center text-sm text-gray-500">
