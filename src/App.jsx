@@ -36,7 +36,6 @@ function App() {
   const RequireAuth = ({ children }) => {
     return auth ? children : <Navigate to="/admin/login" />;
   };
-  console.log(import.meta.env.VITE_FIREBASE_KEY);
   return (
     <>
       <div className={darkMode ? "app dark" : "app"}>
