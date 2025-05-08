@@ -1,7 +1,7 @@
 import { formatImage } from "./utils/formatImage";
 
 export const userColumns = [
-  { field: "uuid", headerName: "ID", width: 270 },
+  { field: "uuid", headerName: "ID", width: 340 },
   {
     field: "fullName",
     headerName: "Full Name",
@@ -20,7 +20,7 @@ export const userColumns = [
   {
     field: "address",
     headerName: "Address",
-    width: 350,
+    width: 300,
   },
 ];
 export const Product = [

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { formatPrice } from "../utils/formatPrise";
 import heart from "../assets/heart.png";
 import fill_heart from "../assets/fill_heart.png";
@@ -10,117 +10,9 @@ import { Controller, useForm } from "react-hook-form";
 import { Button, Form, Input } from "antd";
 const { TextArea } = Input;
 import { useNavigate } from "react-router-dom";
-
-const info = [
-  {
-    id: 1,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/5-2Qh3der08wcaM4kaOckVxA73BHGErUZn6Q7jdndxA/t:0::0:0/pd:60:30:60:30/rs:fit:364:156:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzUwMTM1ODIucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 2,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/ovZGvg3Uf1rVS0NDM_qYfUN3jA4XxrA72Pfoiv-A0g8/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQxOTM4OTgucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 3,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/LUpXV8nlt4e81PopqyLLdHTGp0ibKXVdYCh4gfLc0DQ/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQ5MTIzMzQucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 4,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/-dAUuiUeUWVFtR3Bg8e_Lh4yEBA7D1K2Ua3Asm2HU8Q/t:0::0:0/pd:30:30:30:30/rs:fit:364:364:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:95/czM6Ly9kaXZhbi9wcm9kdWN0LzQ5OTI1NjQucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 5,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/pgqf59hBum2_fKyjsGxMKj8CYCI59ppCvHFxBZ2iCAQ/t:0::0:0/pd:60:30:60:30/rs:fit:364:156:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:95/czM6Ly9kaXZhbi9wcm9kdWN0LzUxNjU5NDYucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 6,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/LUpXV8nlt4e81PopqyLLdHTGp0ibKXVdYCh4gfLc0DQ/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQ5MTIzMzQucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 7,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/LUpXV8nlt4e81PopqyLLdHTGp0ibKXVdYCh4gfLc0DQ/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQ5MTIzMzQucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 8,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/LUpXV8nlt4e81PopqyLLdHTGp0ibKXVdYCh4gfLc0DQ/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQ5MTIzMzQucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-  {
-    id: 9,
-    name: "Floor Red Lorem",
-    color: "qizil",
-    description:
-      "Blurb to get reader hooked. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sit! Lorem ipsumdolor, sit amet consectetur adipisicing elit. Ducimus",
-    country: "Germaniya",
-    is_modern: true,
-    img: "https://cdn0.divan.by/img/v1/I8DHu5sTDGU98tCmg5gZ0o5L6-_BImN6dWIg__oV04w/t:0::0:0/pd:30:30:30:30/rs:fit:364:216:0:1:ce:0:0/g:ce:0:0/bg:f5f3f1/q:85/czM6Ly9kaXZhbi9wcm9kdWN0LzQxNzA4NjIucG5n.jpg",
-    discount_price: 2522255,
-    current_price: 5225566,
-  },
-];
+import { myOrderContext } from "../services/providers/orderContext";
+import { ToastContainer, toast } from "react-toastify";
+import { axiosT } from "../services/api/axios";
 
 const Order = () => {
   const {
@@ -130,65 +22,145 @@ const Order = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const navigate = useNavigate();
-  const submitHandler = () => {
-    const data = getValues().USER;
+  const { myOrder, setMyOrder } = useContext(myOrderContext);
+
+  function current_price() {
+    const sumWithInitial = myOrder.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.current_price,
+      0
+    );
+    return sumWithInitial;
+  }
+  function discount_price() {
+    const sumWithInitial = myOrder.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.discount_price,
+      0
+    );
+    return sumWithInitial - current_price();
+  }
+
+  function orderFunc() {
+    let data = {
+      user_id: JSON.parse(localStorage.getItem("user_id")),
+      total_amount: current_price(),
+      items: [...myOrder],
+    };
+    axiosT
+      .post("/user/createOrder", data)
+      .then((response) => {
+        console.log(response);
+        toast.info("Buyurtmangiz qabul qilindi", {
+          position: "top-right",
+        });
+        setMyOrder([]);
+        // navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Buyurtmada xatolik yuz berdi", {
+          position: "top-right",
+        });
+      });
     console.log(data);
-    console.log("Hello");
-  };
+  }
+  function deleteItem(id) {
+    let myOrder2 = myOrder.filter((item) => item.uuid !== id);
+    console.log(myOrder2);
+    localStorage.setItem("order", JSON.stringify(myOrder2));
+    setMyOrder(myOrder2);
+  }
+  // function removeCount(id) {
+  //   myOrder.forEach((item) => {
+  //     if (item.uuid == id) {
+  //       item.count -= 1;
+  //     }
+  //   });
+  //   localStorage.setItem("order", JSON.stringify(myOrder));
+  //   setMyOrder(JSON.parse(localStorage.getItem("order")));
+  // }
+
+  // function addCount(id) {
+  //   let index = myOrder.findIndex((item) => item.uuid == id);
+  //   console.log(index);
+
+  //   myOrder[index].count += 1;
+  //   localStorage.setItem("order", JSON.stringify(myOrder));
+  //   // setMyOrder((prev) => [...prev, data]);
+  //   window.refresh();
+  //   setMyOrder(myOrder);
+  //   console.log(myOrder);
+  // }
+
   return (
     <div className="container">
-      <div className="hidden sm:block order_right">
-        <h2>Umumiy summa: {formatPrice(16452600)} UZS</h2>
-        <p className="mb-3">
-          5 mahsulotlar miqdori uchun:{" "}
-          <span className="font-bold">{formatPrice(16445600)} сум</span>
-        </p>
-        <p className="mb-3">
-          Sizning chegirmangiz:{" "}
-          <span className="text-red-600 font-bold">
-            -{formatPrice(541452554)} сум
-          </span>
-        </p>
-        <div className="flex flex-col gap-3">
-          <h3 className="font-bold text-xl">Diqqat</h3>
-          <p>Tanlangan mebellarga buyurtma berish uchun pastdagi formani to'ldiring va "Jo'natish" tugmasini bosing.</p>
-          <Link
-            to={"/furnitures"}
-            className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded-2xl text-center"
-          >
-            Mebellar to'plamiga qaytish <span aria-hidden="true">&rarr;</span>
-          </Link>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {myOrder.length && (
+        <div className="hidden sm:block order_right">
+          <h2>Umumiy summa: {formatPrice(current_price())} UZS</h2>
+          <p className="mb-3">
+            5 mahsulotlar miqdori uchun:{" "}
+            <span className="font-bold">
+              {formatPrice(current_price())} сум
+            </span>
+          </p>
+          <p className="mb-3">
+            Sizning chegirmangiz:{" "}
+            <span className="text-red-600 font-bold">
+              -{formatPrice(discount_price())} сум
+            </span>
+          </p>
+          <div className="flex flex-col gap-3">
+            <h3 className="font-bold text-xl">Diqqat</h3>
+            <p>
+              Diqqat buyurtma berganingizdan so'ng admin siz bilan bog'lanadi.
+            </p>
+            <button
+              onClick={() => {
+                orderFunc();
+              }}
+              className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded-2xl text-center"
+            >
+              Buyurtma berish <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="min-h-[90dvh] px-6 lg:px-8">
         <h1 className="common_title">Sizning savatingiz</h1>
         <div className="order_wrap">
           <div className="order_left">
-            {info.map((item) => {
+            {myOrder.map((item) => {
               return (
-                <div key={item.id} className="order_card">
+                <div key={item.uuid} className="order_card">
                   <div className="order_img">
-                    <img src={exp} alt="" />
+                    <img src={item.img} alt="" />
                   </div>
                   <div className="order_content">
-                    <h3>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Officia, neque distinctio est ex quam nobis iusto ipsa sit
-                      illum tempore reiciendis eveniet rerum omnis a quaerat
-                      facere? Unde, odio aut?
-                    </p>
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
                   </div>
                   <div className="order_info">
                     <div className="order_price">
-                      <p>{formatPrice(66165200)}</p>
-                      <p>{formatPrice(39726800)} UZS</p>
+                      <p>{formatPrice(item.discount_price)}</p>
+                      <p>{formatPrice(item.current_price)} UZS</p>
                     </div>
-                    <div className="order_info_buttons sm:w-[180px] w-[70px] sm:py-[8px] py-[5px] sm:px-[15px] px-[10px] flex items-center justify-between text-white rounded-[15px] gap-[15px]">
-                      <button className="cursor-pointer">
+                    {/* <div className="order_info_buttons sm:w-[180px] w-[70px] sm:py-[8px] py-[5px] sm:px-[15px] px-[10px] flex items-center justify-between text-white rounded-[15px] gap-[15px]">
+                      <button
+                        onClick={() => removeCount(item.uuid)}
+                        className="cursor-pointer"
+                      >
                         <svg
                           viewBox="0 0 19 5"
                           fill="none"
@@ -205,9 +177,14 @@ const Order = () => {
                         </svg>
                       </button>
 
-                      <p className="text-white inter sm:text-lg text-sm">5</p>
+                      <p className="text-white inter sm:text-lg text-sm">
+                        {item.count}
+                      </p>
 
-                      <button className="cursor-pointer">
+                      <button
+                        onClick={() => addCount(item.uuid)}
+                        className="cursor-pointer"
+                      >
                         <svg
                           viewBox="0 0 19 19"
                           fill="none"
@@ -230,20 +207,18 @@ const Order = () => {
                           />
                         </svg>
                       </button>
-                    </div>
-                    <div className="order_info_img">
-                      {true ? (
-                        <img src={heart} alt="" />
-                      ) : (
-                        <img src={fill_heart} alt="" />
-                      )}
+                    </div> */}
+                    <div
+                      onClick={() => deleteItem(item.uuid)}
+                      className="order_info_img"
+                    >
                       <img src={clear} alt="" />
                     </div>
                   </div>
                 </div>
               );
             })}
-            <div className="w-full flex flex-col order_form">
+            {/* <div className="w-full flex flex-col order_form">
               <h2 className="font-bold text-2xl mb-4">
                 Quyidagi ma'lumotlarni to'ldiring
               </h2>
@@ -346,37 +321,41 @@ const Order = () => {
                   </button>
                 </div>
               </Form>
-            </div>
+            </div> */}
           </div>
 
-          <div className="sm:hidden block order_sum">
-            <h2>Umumiy summa: {formatPrice(16445260)} UZS</h2>
-            <p className="mb-3">
-              5 mahsulot miqdori uchun:{" "}
-              <span className="font-bold">{formatPrice(16445260)} UZS</span>
-            </p>
-            <p className="mb-3">
-              Sizning chegirmangiz:{" "}
-              <span className="text-red-600 font-bold">
-                -{formatPrice(541452554)} UZS
-              </span>
-            </p>
-            <div className="flex flex-col gap-3">
-              <Link
-                to={"/send"}
-                className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded-2xl text-center"
-              >
-                Davom etish
-              </Link>
-              <Link
-                to={"/furnitures"}
-                className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded-2xl text-center"
-              >
-                Mebellar to'plamiga qaytish{" "}
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
+          {myOrder.length && (
+            <div className="sm:hidden block order_sum">
+              <h2>Umumiy summa: {formatPrice(current_price())} UZS</h2>
+              <p className="mb-3">
+                5 mahsulot miqdori uchun:{" "}
+                <span className="font-bold">
+                  {formatPrice(current_price())} UZS
+                </span>
+              </p>
+              <p className="mb-3">
+                Sizning chegirmangiz:{" "}
+                <span className="text-red-600 font-bold">
+                  -{formatPrice(discount_price())} UZS
+                </span>
+              </p>
+              <div className="flex flex-col gap-3">
+                <h3 className="font-bold text-xl">Diqqat</h3>
+                <p>
+                  Diqqat buyurtma berganingizdan so'ng admin siz bilan
+                  bog'lanadi.
+                </p>
+                <button
+                  onClick={() => {
+                    orderFunc();
+                  }}
+                  className="text-base font-semibold leading-6 hover:bg-slate-600 transition-colors bg-[#1F2937] text-white py-2 px-5 rounded-2xl text-center"
+                >
+                  Buyurtma berish <span aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

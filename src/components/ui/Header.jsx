@@ -1,16 +1,17 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import basket from "../../assets/basket.png";
+import { myOrderContext } from "../../services/providers/orderContext";
 
 const Header = () => {
   const hidden = useRef();
+  const { myOrder, setMyOrder } = useContext(myOrderContext);
   function openNavbarFunction() {
     hidden.current?.classList.remove("hidden");
   }
   function closeNavbarFunction() {
     hidden.current?.classList.add("hidden");
   }
-  const navigate = useNavigate();
   return (
     <>
       <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -37,15 +38,8 @@ const Header = () => {
                 className="block w-[30px] h-[30px] header_img"
               >
                 <img className="object-cover" src={basket} alt="" />
-                <p>0</p>
+                <p>{myOrder?.length}</p>
               </NavLink>
-              {/* <NavLink
-                to={"/saved"}
-                className="block w-[30px] h-[30px] header_img"
-              >
-                <img className="object-cover" src={saved} alt="" />
-                <p>0</p>
-              </NavLink> */}
             </div>
             <button
               onClick={() => openNavbarFunction()}
@@ -102,7 +96,7 @@ const Header = () => {
             </NavLink>
             <NavLink to={"/order"} className="w-[30px] h-[30px] header_img">
               <img className="object-cover" src={basket} alt="" />
-              <p>0</p>
+              <p>{myOrder?.length}</p>
             </NavLink>
             {/* <NavLink to={"/saved"} className="w-[30px] h-[30px] header_img">
               <img className="object-cover" src={saved} alt="" />

@@ -307,24 +307,6 @@ const Design = () => {
               <div ref={captionText} id="caption"></div>
             </div>
           </div>
-
-          {/* <img className="d1" src={i1} alt="" /> */}
-          {/* <img className="d2" src={i2} alt="" />
-          <img className="d3" src={i3} alt="" />
-          <img className="d4" src={i4} alt="" />
-          <img className="d5" src={i5} alt="" />
-          <img className="d6" src={i6} alt="" />
-          <img className="d7" src={i7} alt="" />
-          <img className="d8" src={i8} alt="" />
-          <img className="d9" src={i9} alt="" />
-          <img className="d10" src={i10} alt="" />
-          <img className="d11" src={i11} alt="" />
-          <img className="d12" src={i12} alt="" />
-          <img className="d13" src={i13} alt="" />
-          <img className="d14" src={i14} alt="" /> */}
-          {/* <img className="d15" src={i15} alt="" />
-          <img className="d16" src={i16} alt="" />
-          <img className="d17 sm:block hidden" src={i17} alt="" /> */}
         </div>
       </div>
     </div>

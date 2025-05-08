@@ -57,15 +57,21 @@ const GridCategory = () => {
   return (
     <div className="sm:p-24 p-8 pb-10">
       <h1 className="text-#1F2937 text-[26px] sm:text-4xl sm:mb-12 mb-4 sm:font-semibold font-bold">
-        Ommabop mebellar
+        Bizning kategoriyalarimiz
       </h1>
+      <p className="sm:w-3/4 w-[100%] text-lg leading-8 text-justify sm:text-start">
+        Bizning onlayn-do'konimizda faqat e'tibor bilan tanlangan mebellar
+        taqdim etilgan,bizning ajoyib mebellar – Toshkent va butun O'zbekiston
+        bo'ylab yetkazib beriladi. Onlayn katalogimizdagi har bir divan ajoyib
+        dizaynning timsolidir!
+      </p>
       <div className="grid_category mt-5 sm:mt-0">
         {data.map((item) => {
           return (
             <div
               key={item.id}
               onClick={() => {
-                navigate(`/category/${item.key}`);
+                navigate(`/category`);
               }}
               className="grid_box cursor-pointer"
             >
@@ -73,7 +79,8 @@ const GridCategory = () => {
               <div className="grid_name">
                 <div>
                   <p>{item.title}</p>
-                  <p>{item.count} ta mahsulot</p>
+                  {/* <p>{item.count} ta mahsulot</p> */}
+                  <p></p>
                 </div>
               </div>
               <div className="grid_clip_path">

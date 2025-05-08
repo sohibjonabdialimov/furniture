@@ -4,9 +4,8 @@ import List from "./pages/list/List";
 import ProductList from "./pages/productList/ProductList";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import Add from "./pages/add/Add";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { adminInputs, productInputs } from "./formSource";
+import { productInputs } from "./formSource";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import UsersLayout from "./layouts/UserLayout";
@@ -29,6 +28,7 @@ import NewCategory from "./pages/newCategory/NewCategory";
 import CategoryList from "./pages/categoryList/CategoryList";
 import AdminRegisterPage from "./pages/AdminRegisterPage";
 import { authContext } from "./services/providers/authContext";
+import AdminOrder from "./pages/AdminOrder";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -46,7 +46,6 @@ function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="/" element={<UsersLayout />}>
               <Route index element={<Dashboard />} />
-              {/* <Route path="furnitures" element={<Furniture />} /> */}
               <Route path="design" element={<Design />} />
               <Route path="order" element={<Order />} />
               <Route path="saved" element={<Saved />} />
@@ -72,6 +71,14 @@ function App() {
                 element={
                   <RequireAuth>
                     <Messages />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="all_orders"
+                element={
+                  <RequireAuth>
+                    <AdminOrder />
                   </RequireAuth>
                 }
               />
@@ -122,7 +129,10 @@ function App() {
                   path="new"
                   element={
                     <RequireAuth>
-                      <New inputs={productInputs} title="Yangi mahsulot qo'shish" />
+                      <New
+                        inputs={productInputs}
+                        title="Yangi mahsulot qo'shish"
+                      />
                     </RequireAuth>
                   }
                 />
@@ -136,14 +146,6 @@ function App() {
                     </RequireAuth>
                   }
                 />
-                {/* <Route
-                  path=":productId"
-                  element={
-                    <RequireAuth>
-                      <Single />
-                    </RequireAuth>
-                  }
-                /> */}
                 <Route
                   path="new"
                   element={

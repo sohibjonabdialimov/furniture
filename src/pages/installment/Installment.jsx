@@ -1,4 +1,3 @@
-import React from "react";
 import plan from "../../assets/chegirma.png";
 import "./style.css";
 

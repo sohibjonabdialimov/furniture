@@ -65,6 +65,12 @@ const Sidebar = () => {
               <span>Xabarlar</span>
             </li>
           </Link>
+          <Link to="/admin/all_orders" style={{ textDecoration: "none" }}>
+            <li>
+              <LocalShippingIcon className="icon" />
+              <span>Buyurtmalar</span>
+            </li>
+          </Link>
           {/* <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>

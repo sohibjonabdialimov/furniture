@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ const Carousel = () => {
     <>
       <div
         id="carouselHome"
-        className="carousel slide "
+        className="carousel slide"
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators">

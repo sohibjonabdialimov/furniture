@@ -1,22 +1,32 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import i1 from "../assets/c1.webp";
-import i2 from "../assets/c2.jpg";
-import i3 from "../assets/c3.webp";
-import i4 from "../assets/c4.jpg";
-import i5 from "../assets/c11.jpg";
-import i6 from "../assets/c12.jpg";
-import i7 from "../assets/c13.jpg";
-import i8 from "../assets/c14.jpg";
+
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { axiosT } from "../services/api/axios";
+import { formatPrice } from "../utils/formatPrise";
+import { useNavigate } from "react-router-dom";
+
 const CategorySlider = () => {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    axiosT
+      .get("/admin/getCategoryBy/c4c56666-5bb7-41e2-8ff5-a42885f4e279")
+      .then((res) => {
+        console.log(res.data.getCategoryById.Products);
+        setData(res.data.getCategoryById.Products);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="sm:p-24 p-8 pb-10 categorySlider">
-      <h1 className="text-#1F2937 text-[26px] sm:text-4xl sm:mb-12 mb-4 sm:font-semibold font-bold">
-        Bizning kategoriyalarimiz
+      <h1 className="text-#1F2937 text-[26px] sm:text-4xl sm:mb-8 mb-4 sm:font-semibold font-bold">
+        Ommabop mebellar
       </h1>
-      <p className="sm:w-3/4 w-[100%] text-lg leading-8 text-justify sm:text-start">Bizning onlayn-do'konimizda faqat e'tibor bilan tanlangan mebellar taqdim etilgan,bizning ajoyib mebellar – Toshkent va butun O'zbekiston bo'ylab yetkazib beriladi. Onlayn katalogimizdagi har bir divan ajoyib dizaynning timsolidir!</p>
+
       <Swiper
         spaceBetween={20}
         grabCursor={true}
@@ -42,150 +52,32 @@ const CategorySlider = () => {
         navigation={true}
         className="mySwiper mt-5 sm:mt-0 rounded-2xl"
       >
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i1} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
+        {data.map((item) => {
+          return (
+            <SwiperSlide onClick={() => {navigate(`/furnitures/${item.uuid}`)}} key={item.uuid}>
+              <div className="autoslider_wrap">
+                <div className="autoslider_img">
+                  <img className="w-[100%] rounded-2xl" src={`http://localhost:7000/${item.img}`} alt="" />
+                  <div>
+                    <p>Chegirma</p>
+                    <p>-{" "}
+                  {Math.floor(
+                    (1 - item.current_price / item.discount_price) * 100
+                  )}{" "}
+                  %</p>
+                  </div>
+                </div>
+                <div className="autoslider_content">
+                  <h3>{item.name}</h3>
+                  <div>
+                    <p>{formatPrice(item.current_price)} UZS</p>
+                    <p>{formatPrice(item.discount_price)}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i2} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i3} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i4} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i5} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i6} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] h-60 rounded-2xl" src={i7} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="autoslider_wrap">
-            <div className="autoslider_img">
-              <img className="w-[100%] rounded-2xl" src={i8} alt="" />
-              <div>
-                <p>Chegirma</p>
-                <p>-30%</p>
-              </div>
-            </div>
-            <div className="autoslider_content">
-              <h3>Divan Rint Bucle Beige</h3>
-              <div>
-                <p>1 380 680 UZS</p>
-                <p>1 726 280</p>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

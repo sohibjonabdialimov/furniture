@@ -19,6 +19,7 @@ const LoginPage = () => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("user_data", JSON.stringify(response.data.data));
+        localStorage.setItem("user_id", JSON.stringify(response.data.data.user_id));
         navigate("/");
       })
       .catch((err) => {
